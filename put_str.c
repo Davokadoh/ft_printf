@@ -6,7 +6,7 @@
 /*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:50:21 by jleroux           #+#    #+#             */
-/*   Updated: 2022/05/03 10:27:45 by jleroux          ###   ########.fr       */
+/*   Updated: 2022/05/24 15:00:14 by jleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	put_str(char *str, t_flags *flags)
 	int	print_count;
 
 	if (!str)
-		return(put_str("(null)", flags));
+		return (put_str("(null)", flags));
 	str_len = ft_strlen(str);
 	if (flags->precision != -1 && flags->precision < str_len)
 		str_len = flags->precision;

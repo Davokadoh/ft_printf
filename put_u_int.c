@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_u_int.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/24 14:59:31 by jleroux           #+#    #+#             */
+/*   Updated: 2022/05/24 14:59:33 by jleroux          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static int get_width(char *nbr_str, t_flags *flags)
+static int	get_width(char *nbr_str, t_flags *flags)
 {
-	int count;
+	int	count;
 
 	count = ft_strlen(nbr_str);
 	if (flags->precision == 0 && *nbr_str == '0')
@@ -16,9 +28,9 @@ static int get_width(char *nbr_str, t_flags *flags)
 	return (count);
 }
 
-static void print_int_precision(char *nbr_str, t_flags *flags)
+static void	print_int_precision(char *nbr_str, t_flags *flags)
 {
-	int count;
+	int	count;
 
 	if (flags->plus)
 		putchar('+');
@@ -36,10 +48,10 @@ static void print_int_precision(char *nbr_str, t_flags *flags)
 	put_str(nbr_str, flags);
 }
 
-int put_u_int(unsigned int nbr, t_flags *flags)
+int	put_u_int(unsigned int nbr, t_flags *flags)
 {
-	char    *nbr_str;
-	int count;
+	char	*nbr_str;
+	int		count;
 
 	nbr_str = ft_itoa(nbr);
 	if (!nbr_str)

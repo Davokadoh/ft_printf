@@ -6,7 +6,7 @@
 /*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 16:06:17 by jleroux           #+#    #+#             */
-/*   Updated: 2022/04/26 15:09:46 by jleroux          ###   ########.fr       */
+/*   Updated: 2022/05/24 14:53:29 by jleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	put_char(char ch)
 {
-	return(write(1, &ch, 1));
+	return (write(1, &ch, 1));
 }
