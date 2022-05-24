@@ -6,7 +6,7 @@
 /*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:36:32 by jleroux           #+#    #+#             */
-/*   Updated: 2022/05/24 14:56:04 by jleroux          ###   ########.fr       */
+/*   Updated: 2022/05/24 15:57:09 by jleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		ft_strlen(char *str);
 char	*ft_strdup(char *src);
 char	*ft_itoa(long long int n);
 char	*ft_itoa_base(long long int n, char *base);
+char	*ft_utoa_base(long long unsigned int n, char *base);
 char	*ft_strchr(const char *s, int c);
 int		ft_printf(const char *input_str, ...);
 

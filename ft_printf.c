@@ -6,7 +6,7 @@
 /*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 11:59:29 by jleroux           #+#    #+#             */
-/*   Updated: 2022/05/24 15:01:32 by jleroux          ###   ########.fr       */
+/*   Updated: 2022/05/24 15:51:50 by jleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static int	parse_type(char const *input_str, va_list args, t_flags *flags)
 	else if (*input_str == 'u')
 		return (put_u_int(va_arg(args, unsigned int), flags));
 	else if (*input_str == 'x')
-		return (put_hex(va_arg(args, unsigned int), flags, 'x'));
+		return (put_hex(va_arg(args, unsigned int), flags, 0));
 	else if (*input_str == 'X')
-		return (put_hex(va_arg(args, unsigned int), flags, 'X'));
+		return (put_hex(va_arg(args, unsigned int), flags, 1));
 	else if (*input_str == '%')
 		return (put_char('%'));
 	else
