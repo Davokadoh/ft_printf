@@ -12,7 +12,16 @@
 
 #include "ft_printf.h"
 
-int	put_char(char ch)
+int	put_char(char ch, t_flags *flags)
 {
-	return (write(1, &ch, 1));
+	int count;
+
+	count = 0;
+	if (flags->right_padded)
+		count += write(1, &ch, 1);
+	while (count < flags->width)
+		count += write(1, " ", 1);
+	if (!flags->right_padded)
+		count += write(1, &ch, 1);
+	return (count);
 }

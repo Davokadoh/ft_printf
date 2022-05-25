@@ -18,7 +18,7 @@ static int	parse_type(char const *input_str, va_list args, t_flags *flags)
 	if (!*input_str)
 		return (0);
 	else if (*input_str == 'c')
-		return (put_char(va_arg(args, int)));
+		return (put_char(va_arg(args, int), flags));
 	else if (*input_str == 's')
 		return (put_str(va_arg(args, char *), flags));
 	else if (*input_str == 'p')
@@ -32,7 +32,7 @@ static int	parse_type(char const *input_str, va_list args, t_flags *flags)
 	else if (*input_str == 'X')
 		return (put_hex(va_arg(args, unsigned int), flags, 1));
 	else if (*input_str == '%')
-		return (put_char('%'));
+		return (put_char('%', flags));
 	else
 		return (0);
 }
@@ -97,7 +97,7 @@ int	ft_printf(const char *input_str, ...)
 			}
 		}
 		else
-			len += put_char(*input_str);
+			len += write(1, input_str, 1);
 		input_str++;
 	}
 	va_end(args);

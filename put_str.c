@@ -15,19 +15,21 @@
 int	put_str(char *str, t_flags *flags)
 {
 	int	str_len;
-	int	print_count;
+	int	count;
 
 	if (!str)
 		return (put_str("(null)", flags));
 	str_len = ft_strlen(str);
 	if (flags->precision != -1 && flags->precision < str_len)
 		str_len = flags->precision;
-	print_count = str_len;
+	count = str_len;
+	if (flags->space)
+		count += write(1, " ", 1);
 	if (flags->right_padded)
 		write(1, str, str_len);
-	while (print_count < flags->width)
-		print_count += putchar(' ');
+	while (count < flags->width || count < flags->precision)
+		count += write(1, " ", 1); //putchar(' ');
 	if (!flags->right_padded)
 		write(1, str, str_len);
-	return (print_count);
+	return (count);
 }

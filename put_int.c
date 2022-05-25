@@ -35,20 +35,20 @@ static void	print_int_precision(int nbr, char *nbr_str, t_flags *flags)
 	int	count;
 
 	if (nbr < 0)
-		put_char(nbr_str++[0]);
+		;//write(1, &nbr_str[0], 1);
 	else if (flags->plus)
-		put_char('+');
+		write(1, "+", 1);
 	else if (flags->space)
-		put_char(' ');
+		write(1, " ", 1);
 	if (flags->precision == 0 && *nbr_str == '0')
 		return ;
 	count = ft_strlen(nbr_str);
 	while (count < flags->precision)
-		count += put_char('0');
+		count += write (1, "0", 1);
 	if (nbr < 0 || flags->plus || flags->space)
 		count++;
 	while (flags->padding_char == '0' && count < flags->width)
-		count += put_char('0');
+		count += write (1, "0", 1);
 	put_str(nbr_str, flags);
 }
 
@@ -66,7 +66,7 @@ int	put_int(long long int nbr, t_flags *flags)
 	if (flags->right_padded)
 		print_int_precision(nbr, nbr_str, flags);
 	while (count < flags->precision)
-		count += put_char(' ');
+		count += write (1, " ", 1);
 	if (!flags->right_padded)
 		print_int_precision(nbr, nbr_str, flags);
 	free(nbr_str);

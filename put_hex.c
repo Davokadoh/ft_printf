@@ -21,7 +21,7 @@ static int	get_width(char *str, t_flags *flags)
 		c = 0;
 	if (flags->precision > c)
 		c = flags->precision;
-	if (flags->hash)
+	if (flags->hash && str[0] != '0')
 		c += 2;
 	if (flags->precision == -1 && flags->precision == '0' && c < flags->width)
 		return (flags->width);
@@ -37,16 +37,16 @@ static void	print_precision(char *str, t_flags *flags, int min_maj)
 	if (flags->precision == 0 && str[0] == '0')
 		return ;
 	count = ft_strlen(str);
-	if (flags->hash && count && min_maj)
+	if (flags->hash && count && min_maj && str[0] != '0')
 		put_str("0X", flags);
-	else if (flags->hash)
+	else if (flags->hash && count && str[0] != '0')
 		put_str("0x", flags);
 	while (count < flags->precision)
-		count += put_char('0');
+		count += write(1, "0", 1);
 	if (flags->hash && str[0] != '0')
 		count += 2;
 	while (flags->padding_char == '0' && count < flags->width)
-		count += put_char('0');
+		count += write(1, "0", 1);
 	put_str(str, flags);
 }
 
@@ -66,7 +66,7 @@ int	put_hex(long long int nbr, t_flags *flags, char min_maj)
 	if (flags->right_padded)
 		print_precision(str, flags, min_maj);
 	while (count < flags->width)
-		count += put_char(' ');
+		count += write(1, " ", 1);
 	if (!flags->right_padded)
 		print_precision(str, flags, min_maj);
 	free(str);
@@ -87,7 +87,7 @@ int put_ptr(void *ptr, t_flags *flags)
 	if (flags->right_padded)
 		print_precision(str, flags, 0);
 	while (count < flags->width)
-		count += put_char(' ');
+		count += write(1, " ", 1);
 	if (!flags->right_padded)
 		print_precision(str, flags, 0);
 	free(str);

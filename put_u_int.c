@@ -62,7 +62,7 @@ int	put_u_int(unsigned int nbr, t_flags *flags)
 	if (flags->right_padded)
 		print_int_precision(nbr_str, flags);
 	while (count < flags->precision)
-		count += put_char(' ');
+		count += write(1, " ", 1);
 	if (!flags->right_padded)
 		print_int_precision(nbr_str, flags);
 	free(nbr_str);

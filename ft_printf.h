@@ -29,7 +29,7 @@ typedef struct s_flags
 	char	padding_char;
 }				t_flags;
 
-int		put_char(char ch);
+int		put_char(char ch, t_flags *flags);
 int		put_str(char *str, t_flags *flags);
 int		put_ptr(void *ptr, t_flags *flags);
 int		put_int(long long int nbr, t_flags *flags);
