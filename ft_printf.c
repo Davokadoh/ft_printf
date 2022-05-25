@@ -6,7 +6,7 @@
 /*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 11:59:29 by jleroux           #+#    #+#             */
-/*   Updated: 2022/05/24 15:51:50 by jleroux          ###   ########.fr       */
+/*   Updated: 2022/05/25 14:30:10 by jleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	parse_type(char const *input_str, va_list args, t_flags *flags)
 {
-	(void) flags;
 	if (!*input_str)
 		return (0);
 	else if (*input_str == 'c')
@@ -59,7 +58,10 @@ static t_flags	parse_flags(char **input_str)
 	while (ft_strchr("-0# +.123456789", **input_str))
 	{
 		if (ft_strchr("123456789", **input_str))
-			flags.width = ft_atoi(*input_str);
+		{
+			flags.width = ft_atoi(input_str);
+			(*input_str)--;
+		}
 		else if (**input_str == '-')
 			flags.right_padded = 1;
 		else if (**input_str == '0')
@@ -71,8 +73,13 @@ static t_flags	parse_flags(char **input_str)
 		else if (**input_str == '+')
 			flags.plus = 1;
 		else if (**input_str == '.')
-			flags.precision = ft_atoi(*input_str);
+		{
+			(*input_str)++;
+			flags.precision = ft_atoi(input_str);
+			(*input_str)--;
+		}
 		(*input_str)++;
+		//printf("\n  %i  \n", flags.width);
 	}
 	return (flags);
 }

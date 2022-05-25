@@ -6,7 +6,7 @@
 /*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 14:56:23 by jleroux           #+#    #+#             */
-/*   Updated: 2022/05/24 14:58:28 by jleroux          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:04:31 by jleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	get_width(char *nbr_str, t_flags *flags)
 		c = flags->precision;
 	else if (flags->precision < 0 && flags->padding_char == '0' && c < flags->width)
 		return (flags->width);
-	if (*nbr_str == '-' && (c == flags->precision))
+	if (*nbr_str == '-' && c == flags->precision)
 		c++;
 	else if (*nbr_str != '-' && (flags->plus || flags->space))
 		c++;
@@ -34,22 +34,23 @@ static void	print_int_precision(int nbr, char *nbr_str, t_flags *flags)
 {
 	int	count;
 
+	count = 0;
 	if (nbr < 0)
-		;//write(1, &nbr_str[0], 1);
+		count += write(1, &nbr_str++[0], 1);
 	else if (flags->plus)
-		write(1, "+", 1);
+		count += write(1, "+", 1);
 	else if (flags->space)
-		write(1, " ", 1);
+		count += write(1, " ", 1);
 	if (flags->precision == 0 && *nbr_str == '0')
 		return ;
-	count = ft_strlen(nbr_str);
+	count += ft_strlen(nbr_str);
+	if (nbr < 0)
+		flags->precision++;
 	while (count < flags->precision)
 		count += write (1, "0", 1);
-	if (nbr < 0 || flags->plus || flags->space)
-		count++;
 	while (flags->padding_char == '0' && count < flags->width)
 		count += write (1, "0", 1);
-	put_str(nbr_str, flags);
+	write(1, nbr_str, ft_strlen(nbr_str));
 }
 
 int	put_int(long long int nbr, t_flags *flags)
@@ -65,7 +66,7 @@ int	put_int(long long int nbr, t_flags *flags)
 	count = get_width(nbr_str, flags);
 	if (flags->right_padded)
 		print_int_precision(nbr, nbr_str, flags);
-	while (count < flags->precision)
+	while (count < flags->width)
 		count += write (1, " ", 1);
 	if (!flags->right_padded)
 		print_int_precision(nbr, nbr_str, flags);

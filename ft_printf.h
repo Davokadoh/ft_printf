@@ -6,7 +6,7 @@
 /*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:36:32 by jleroux           #+#    #+#             */
-/*   Updated: 2022/05/24 15:57:09 by jleroux          ###   ########.fr       */
+/*   Updated: 2022/05/25 14:13:32 by jleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int		put_str(char *str, t_flags *flags);
 int		put_ptr(void *ptr, t_flags *flags);
 int		put_int(long long int nbr, t_flags *flags);
 int		put_u_int(unsigned int nbr, t_flags *flags);
-int		put_hex(long long int nbr, t_flags *flags, char min_maj);
+int		put_hex(long long int nbr, t_flags *flags, int min_maj);
 int		ft_isdigit(char const ch);
-int		ft_atoi(char *str);
+int		ft_atoi(char **str);
 int		ft_strlen(char *str);
 char	*ft_strdup(char *src);
 char	*ft_itoa(long long int n);

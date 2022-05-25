@@ -6,7 +6,7 @@
 /*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 16:06:17 by jleroux           #+#    #+#             */
-/*   Updated: 2022/05/24 14:53:29 by jleroux          ###   ########.fr       */
+/*   Updated: 2022/05/25 11:35:51 by jleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	put_char(char ch, t_flags *flags)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (flags->right_padded)

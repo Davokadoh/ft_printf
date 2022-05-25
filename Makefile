@@ -6,7 +6,7 @@
 #    By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 13:26:50 by jleroux           #+#    #+#              #
-#    Updated: 2022/05/24 15:17:42 by jleroux          ###   ########.fr        #
+#    Updated: 2022/05/25 11:34:00 by jleroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS	=	ft_printf.c\
 			put_int.c\
 			put_u_int.c\
 			put_hex.c\
-			ft_strdup.c\
+			put_ptr.c\
 			ft_atoi.c\
 			ft_itoa.c\
 			ft_itoa_base.c\

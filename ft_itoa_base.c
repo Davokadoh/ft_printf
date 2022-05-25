@@ -6,7 +6,7 @@
 /*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:50:01 by jleroux           #+#    #+#             */
-/*   Updated: 2022/05/24 15:57:02 by jleroux          ###   ########.fr       */
+/*   Updated: 2022/05/25 11:35:39 by jleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,3 @@ char	*ft_utoa_base(long long unsigned int n, char *base)
 	add_digit(n, &str[--len], base);
 	return (str);
 }
-

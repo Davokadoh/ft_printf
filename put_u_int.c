@@ -6,7 +6,7 @@
 /*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 14:59:31 by jleroux           #+#    #+#             */
-/*   Updated: 2022/05/24 14:59:33 by jleroux          ###   ########.fr       */
+/*   Updated: 2022/05/25 15:16:00 by jleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,19 @@ static void	print_int_precision(char *nbr_str, t_flags *flags)
 {
 	int	count;
 
+	count = 0;
 	if (flags->plus)
-		putchar('+');
+		count += write(1, "+", 1);
 	else if (flags->space)
-		putchar(' ');
+		count += write(1, " ", 1);
 	if (flags->precision == 0 && *nbr_str == '0')
 		return ;
-	count = ft_strlen(nbr_str);
+	count += ft_strlen(nbr_str);
 	while (count < flags->precision)
-		count += putchar('0');
-	if (flags->plus || flags->space)
-		count++;
+		count += write(1, "0", 1);
 	while (flags->padding_char == '0' && count < flags->width)
-		count += putchar('0');
-	put_str(nbr_str, flags);
+		count += write(1, "0", 1);
+	write(1, nbr_str, ft_strlen(nbr_str));
 }
 
 int	put_u_int(unsigned int nbr, t_flags *flags)
@@ -61,7 +60,7 @@ int	put_u_int(unsigned int nbr, t_flags *flags)
 	count = get_width(nbr_str, flags);
 	if (flags->right_padded)
 		print_int_precision(nbr_str, flags);
-	while (count < flags->precision)
+	while (count < flags->width)
 		count += write(1, " ", 1);
 	if (!flags->right_padded)
 		print_int_precision(nbr_str, flags);
