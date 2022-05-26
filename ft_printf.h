@@ -26,7 +26,7 @@ typedef struct s_flags
 	int		hash;
 	int		space;
 	int		plus;
-	char	padding_char;
+	char	pad_char;
 }				t_flags;
 
 int		put_char(char ch, t_flags *flags);

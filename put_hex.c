@@ -6,7 +6,7 @@
 /*   By: jleroux <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 16:06:26 by jleroux           #+#    #+#             */
-/*   Updated: 2022/05/25 14:58:45 by jleroux          ###   ########.fr       */
+/*   Updated: 2022/05/26 11:36:52 by jleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	get_width(char *str, t_flags *flags)
 		c = flags->precision;
 	if (flags->hash && str[0] != '0')
 		c += 2;
-	if (flags->precision == -1 && flags->padding_char == '0' && c < flags->width)
+	if (flags->precision == -1 && flags->pad_char == '0' && c < flags->width)
 		return (flags->width);
 	if (str[0] == '-' && (c == flags->precision || c == flags->width))
 		c++;
@@ -45,7 +45,7 @@ static void	print_precision(char *str, t_flags *flags, int min_maj)
 		count += write(1, "0", 1);
 	if (flags->hash && str[0] != '0')
 		count += 2;
-	while (flags->padding_char == '0' && count < flags->width)
+	while (flags->pad_char == '0' && count < flags->width)
 		count += write(1, "0", 1);
 	write(1, str, ft_strlen(str));
 }

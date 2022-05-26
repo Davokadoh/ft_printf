@@ -21,7 +21,7 @@ static int	get_width(char *nbr_str, t_flags *flags)
 		return (0);
 	if (flags->precision > count)
 		count = flags->precision;
-	else if (flags->precision < 0 && flags->padding_char == '0' && count < flags->width)
+	else if (flags->precision < 0 && flags->pad_char == '0' && count < flags->width)
 		return (flags->width);
 	else if (flags->plus || flags->space)
 		count++;
@@ -42,7 +42,7 @@ static void	print_int_precision(char *nbr_str, t_flags *flags)
 	count += ft_strlen(nbr_str);
 	while (count < flags->precision)
 		count += write(1, "0", 1);
-	while (flags->padding_char == '0' && count < flags->width)
+	while (flags->pad_char == '0' && count < flags->width)
 		count += write(1, "0", 1);
 	write(1, nbr_str, ft_strlen(nbr_str));
 }
@@ -56,7 +56,7 @@ int	put_u_int(unsigned int nbr, t_flags *flags)
 	if (!nbr_str)
 		return (-1);
 	if (flags->precision >= 0 || flags->right_padded)
-		flags->padding_char = ' ';
+		flags->pad_char = ' ';
 	count = get_width(nbr_str, flags);
 	if (flags->right_padded)
 		print_int_precision(nbr_str, flags);

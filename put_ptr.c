@@ -45,7 +45,7 @@ static void	print_precision(char *str, t_flags *flags, int min_maj)
 		count += write(1, "0", 1);
 	if (flags->hash)
 		count += 2;
-	while (flags->padding_char == '0' && count < flags->width)
+	while (flags->pad_char == '0' && count < flags->width)
 		count += write(1, "0", 1);
 	write(1, str, ft_strlen(str));
 }
