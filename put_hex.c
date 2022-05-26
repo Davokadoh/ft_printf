@@ -23,7 +23,7 @@ static int	get_width(char *str, t_flags *flags)
 		c = flags->precision;
 	if (flags->hash && str[0] != '0')
 		c += 2;
-	if (flags->precision == -1 && flags->pad_char == '0' && c < flags->width)
+	if (flags->precision == -1 && flags->pad == '0' && c < flags->width)
 		return (flags->width);
 	if (str[0] == '-' && (c == flags->precision || c == flags->width))
 		c++;
@@ -45,7 +45,7 @@ static void	print_precision(char *str, t_flags *flags, int min_maj)
 		count += write(1, "0", 1);
 	if (flags->hash && str[0] != '0')
 		count += 2;
-	while (flags->pad_char == '0' && count < flags->width)
+	while (flags->pad == '0' && count < flags->width)
 		count += write(1, "0", 1);
 	write(1, str, ft_strlen(str));
 }

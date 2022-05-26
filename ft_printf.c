@@ -42,7 +42,7 @@ static t_flags	init_flags(void)
 
 	flags.width = 0;
 	flags.right_padded = 0;
-	flags.pad_char = ' ';
+	flags.pad = ' ';
 	flags.hash = 0;
 	flags.space = 0;
 	flags.plus = 0;
@@ -72,7 +72,7 @@ static t_flags	parse_flags(char **input_str)
 		else if (**input_str == '-')
 			flags.right_padded = 1;
 		else if (**input_str == '0')
-			flags.pad_char = '0';
+			flags.pad = '0';
 		else if (**input_str == '#')
 			flags.hash = 1;
 		else if (**input_str == ' ')
