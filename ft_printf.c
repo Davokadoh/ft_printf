@@ -50,6 +50,13 @@ static t_flags	init_flags(void)
 	return (flags);
 }
 
+static void	parse_precision(char **input_str, t_flags *flags)
+{
+	(*input_str)++;
+	flags->precision = ft_atoi(input_str);
+	(*input_str)--;
+}
+
 static t_flags	parse_flags(char **input_str)
 {
 	t_flags	flags;
@@ -73,13 +80,8 @@ static t_flags	parse_flags(char **input_str)
 		else if (**input_str == '+')
 			flags.plus = 1;
 		else if (**input_str == '.')
-		{
-			(*input_str)++;
-			flags.precision = ft_atoi(input_str);
-			(*input_str)--;
-		}
+			parse_precision(input_str, flags);
 		(*input_str)++;
-		//printf("\n  %i  \n", flags.width);
 	}
 	return (flags);
 }
